@@ -9,6 +9,7 @@ import AuthProvider from 'contexts/AuthContext'
 import 'scss/index.scss'
 import ConfigProvider from './contexts/ConfigContext'
 import store from './store'
+import NavigationScroll from 'commons/NavigationScroll'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -18,7 +19,9 @@ root.render(
         <ConfigProvider>
           <AuthProvider>
             <BrowserRouter>
-              <App />
+              <NavigationScroll>
+                <App />
+              </NavigationScroll>
             </BrowserRouter>
           </AuthProvider>
         </ConfigProvider>
