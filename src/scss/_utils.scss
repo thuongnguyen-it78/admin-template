@@ -1,0 +1,123 @@
+@each $prefix, $value in $spacings {
+  .ms-#{$prefix} {
+    margin-left: $value !important;
+  }
+
+  .me-#{$prefix} {
+    margin-right: $value !important;
+  }
+
+  .mt-#{$prefix} {
+    margin-top: $value !important;
+  }
+
+  .mb-#{$prefix} {
+    margin-bottom: $value !important;
+  }
+
+  .mx-#{$prefix} {
+    margin-left: $value !important;
+    margin-right: $value !important;
+  }
+
+  .my-#{$prefix} {
+    margin-top: $value !important;
+    margin-bottom: $value !important;
+  }
+
+  .m-#{$prefix} {
+    margin: $value !important;
+  }
+
+  // ============ //
+
+  .ps-#{$prefix} {
+    padding-left: $value !important;
+  }
+
+  .pe-#{$prefix} {
+    padding-right: $value !important;
+  }
+
+  .pt-#{$prefix} {
+    padding-top: $value !important;
+  }
+
+  .pb-#{$prefix} {
+    padding-bottom: $value !important;
+  }
+
+  .px-#{$prefix} {
+    padding-left: $value !important;
+    padding-right: $value !important;
+  }
+
+  .py-#{$prefix} {
+    padding-top: $value !important;
+    padding-bottom: $value !important;
+  }
+
+  .p-#{$prefix} {
+    padding: $value !important;
+  }
+}
+
+@each $color, $val in $colors {
+  .color-#{$color} {
+    color: $val;
+  }
+
+  .bg-#{$color} {
+    background-color: $val;
+  }
+}
+
+@each $val in $numbers {
+  .grid-col-#{$val} {
+    grid-template-columns: repeat($val, 1fr);
+  }
+}
+
+@each $val in $numbers {
+  .grid-col-md-#{$val} {
+    @include tablet {
+      grid-template-columns: repeat($val, 1fr);
+    }
+  }
+}
+
+@each $val in $numbers {
+  .grid-col-sm-#{$val} {
+    @include mobile {
+      grid-template-columns: repeat($val, 1fr);
+    }
+  }
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.oneline {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.twoline {
+  display: block;
+  overflow: hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
