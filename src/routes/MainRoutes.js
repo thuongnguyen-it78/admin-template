@@ -4,7 +4,7 @@ import AuthGuard from 'commons/AuthGuard'
 import MainLayout from 'commons/layout/MainLayout'
 import Loader from 'commons/Loader'
 import NotFound from 'commons/NotFound'
-import { NOT_FOUND_PATH, PRODUCT_PATH } from 'constants/path'
+import { DASHBOARD_PATH, NOT_FOUND_PATH, PRODUCT_PATH } from 'constants/path'
 
 // product routing
 const ProductList = Loader(lazy(() => import('features/product/pages/ProductList')))
@@ -19,6 +19,10 @@ const MainRoutes = {
     </AuthGuard>
   ),
   children: [
+    {
+      path: DASHBOARD_PATH,
+      element: <ProductList />,
+    },
     {
       path: PRODUCT_PATH,
       element: <ProductList />,

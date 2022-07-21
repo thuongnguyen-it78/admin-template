@@ -4,5 +4,5 @@ import AuthRoutes from './AuthRoutes'
 import MainRoutes from './MainRoutes'
 
 export default function ThemeRoutes() {
-  return useRoutes([AuthRoutes, MainRoutes])
+  return useRoutes([MainRoutes, AuthRoutes])
 }

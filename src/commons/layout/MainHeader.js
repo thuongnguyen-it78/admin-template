@@ -1,8 +1,15 @@
-
+import logo from 'assets/images/logo.png'
 function MainHeader(props) {
-  return <header className="main-header">MainHeader</header>;
+  return (
+    <header className="main-header">
+      <div className="main-header-logo">
+        <img src={logo} alt="" />
+        <span className="main-header-logo-text">Nippon Paint - Dealer CRM</span>
+      </div>
+    </header>
+  )
 }
 
-MainHeader.propTypes = {};
+MainHeader.propTypes = {}
 
-export default MainHeader;
+export default MainHeader
