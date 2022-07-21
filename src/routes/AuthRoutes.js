@@ -4,7 +4,7 @@ import Loader from 'commons/Loader'
 import { LOGIN_PATH } from 'constants/path'
 import { lazy } from 'react'
 
-const Login = Loader(lazy(() => import('feature/auth/pages/Login')))
+const Login = Loader(lazy(() => import('features/auth/pages/Login')))
 
 const LoginRoutes = {
   path: '/',

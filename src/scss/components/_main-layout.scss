@@ -1,0 +1,39 @@
+.main-layout {
+  min-height: 1000vh;
+
+  .main-layout-sider {
+    padding-top: $header-height;
+  }
+
+  .sub-main-layout {
+    padding-top: $header-height;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .sub-main-layout-header {
+    height: $header-height;
+    background: #ffb000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .sub-main-layout-outlet {
+    padding: 16px;
+    background-color: #fff;
+  }
+
+  .ant-menu.ant-menu-root {
+    height: calc(100vh - 48px - 1px);
+  }
+
+  .ant-layout-sider-trigger {
+    background-color: #fff;
+    border-top: 1px solid #f0f2f5;
+    svg {
+      color: #000;
+    }
+  }
+}

@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom'
 
 function MinimalLayout(props) {
-  console.log("first")
   return (
     <>
       <Outlet />

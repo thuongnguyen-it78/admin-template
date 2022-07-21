@@ -7,7 +7,7 @@ import NotFound from 'commons/NotFound'
 import { NOT_FOUND_PATH, PRODUCT_PATH } from 'constants/path'
 
 // product routing
-const ProductList = Loader(lazy(() => import('feature/product/pages/ProductList')))
+const ProductList = Loader(lazy(() => import('features/product/pages/ProductList')))
 
 // ==============================|| MAIN ROUTING ||============================== //
 
