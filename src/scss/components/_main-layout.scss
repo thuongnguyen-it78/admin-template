@@ -1,14 +1,19 @@
 .main-layout {
-  min-height: 1000vh;
+  min-height: 100vh;
 
   .main-layout-sider {
     padding-top: $header-height;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    height: calc(100vh - 48px - 1px);
   }
 
   .sub-main-layout {
     padding-top: $header-height;
     padding-left: 16px;
     padding-right: 16px;
+    transition: all 0.2s;
   }
 
   .sub-main-layout-header {
@@ -18,11 +23,11 @@
     top: 0;
     left: 0;
     right: 0;
+    z-index: 1000;
   }
 
   .sub-main-layout-outlet {
     padding: 16px;
-    background-color: #fff;
   }
 
   .ant-menu.ant-menu-root {
