@@ -1,5 +1,7 @@
+import { ConfigProvider as AntDConfigProvider } from 'antd'
 import 'antd/dist/antd.min.css'
 import NavigationScroll from 'commons/NavigationScroll'
+import { antDConfig } from 'config'
 import AuthProvider from 'contexts/AuthContext'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
@@ -15,7 +17,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ConfigProvider>
+      <AntDConfigProvider {...antDConfig}>
         <ConfigProvider>
           <AuthProvider>
             <BrowserRouter>
@@ -25,7 +27,7 @@ root.render(
             </BrowserRouter>
           </AuthProvider>
         </ConfigProvider>
-      </ConfigProvider>
+      </AntDConfigProvider>
     </Provider>
   </React.StrictMode>
 )

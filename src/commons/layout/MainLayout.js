@@ -1,4 +1,4 @@
-import { Breadcrumb, Layout, Menu } from 'antd'
+import { Layout, Menu } from 'antd'
 import { navList } from 'constants/nav'
 import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
@@ -31,20 +31,12 @@ const MainLayout = () => {
         </Header>
 
         <Content className="sub-main-layout-content">
-          <Breadcrumb
-            style={{
-              margin: '16px 0',
-            }}
-          >
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
-          <div className="sub-main-layout-outlet">
-            <Outlet />
-          </div>
+          <Outlet />
         </Content>
 
-        <Footer><MainFooter /></Footer>
+        <Footer>
+          <MainFooter />
+        </Footer>
       </Layout>
     </Layout>
   )

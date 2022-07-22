@@ -26,7 +26,7 @@ function CommonBreadcrumb({ routes }) {
     })
   }
 
-  return <Breadcrumb className="h6 mt-2 mb-3">{renderBreadcrumbItems(routes || [])}</Breadcrumb>
+  return <Breadcrumb className="common-breadcrumb mb-2">{renderBreadcrumbItems(routes || [])}</Breadcrumb>
 }
 
 export default CommonBreadcrumb

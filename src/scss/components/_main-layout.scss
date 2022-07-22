@@ -1,12 +1,15 @@
 .main-layout {
   min-height: 100vh;
 
+  $sider-trigger-height: 48px;
+  $sider-height: calc(100vh - #{$sider-trigger-height} - 1px);
+
   .main-layout-sider {
     padding-top: $header-height;
     position: fixed;
     top: 0;
     z-index: 999;
-    height: calc(100vh - 48px - 1px);
+    height: $sider-height;
   }
 
   .sub-main-layout {
@@ -27,12 +30,12 @@
     z-index: 1000;
   }
 
-  .sub-main-layout-outlet {
-    padding: 16px;
+  .sub-main-layout-content {
+    padding-top: 10px;
   }
 
   .ant-menu.ant-menu-root {
-    height: calc(100vh - 48px - 1px);
+    height: $sider-height;
   }
 
   .ant-layout-sider-trigger {

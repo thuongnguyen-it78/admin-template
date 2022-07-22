@@ -4,7 +4,7 @@ function MainHeader(props) {
     <header className="main-header">
       <div className="main-header-logo">
         <img src={logo} alt="" />
-        <span className="main-header-logo-text">Nippon Paint - Dealer CRM</span>
+        <span className="main-header-logo-text">Andres CRM</span>
       </div>
     </header>
   )
