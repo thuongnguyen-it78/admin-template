@@ -20,9 +20,10 @@ const dateKeyList = [
 
 export const formatValueFilter = (filter) => {
   let cloneFilter = _.cloneDeep(filter)
-  for (const property in cloneFilter) {
-    if (dateKeyList.includes(property) && cloneFilter[property]) {
-      cloneFilter[property] = moment(cloneFilter[property], 'YYYY-MM-DD')
+  for (const filterKey in cloneFilter) {
+    // process date
+    if (dateKeyList.includes(filterKey) && cloneFilter[filterKey]) {
+      cloneFilter[filterKey] = moment(cloneFilter[filterKey], 'YYYY-MM-DD')
     }
   }
   return cloneFilter
@@ -30,11 +31,27 @@ export const formatValueFilter = (filter) => {
 
 export const formatFilterBeforeSyncURL = (filter) => {
   const cloneFilter = _.cloneDeep(filter)
-  dateKeyList.forEach((dateKey) => {
-    if (cloneFilter[dateKey]) {
-      cloneFilter[dateKey] = moment(cloneFilter[dateKey]).format('YYYY-MM-DD')
+  for (let filterKey in cloneFilter) {
+    // process date
+    if (dateKeyList.includes(filterKey) && cloneFilter[filterKey]) {
+      cloneFilter[filterKey] = moment(cloneFilter[filterKey]).format('YYYY-MM-DD')
     }
-  })
+
+    // process undefined and null value
+    if (cloneFilter[filterKey] === null || cloneFilter[filterKey] === undefined) {
+      delete cloneFilter[filterKey]
+    }
+  }
 
   return cloneFilter
+}
+
+export const formatFilterValue = ({ value, type, split, defaultValue = undefined }) => {
+  if (value === undefined || value === null) return defaultValue
+  if (!type) return value
+
+  if (type === 'date') return moment(value)
+  if (type === 'number') return Number(value)
+  if (type === 'array') return value.split(split)
+  return value
 }
