@@ -31,7 +31,7 @@ function ProductList(props) {
   ])
 
   return (
-    <CommonContent breadcrumb={breadcrumb} isError>
+    <CommonContent breadcrumb={breadcrumb}>
       <ProductFilter filter={filter} onFilterChange={onFilterChange} onResetFilter={onResetFilter} />
       <ProductTable />
     </CommonContent>

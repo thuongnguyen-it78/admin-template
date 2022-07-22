@@ -10,7 +10,6 @@ import { DASHBOARD_PATH, NOT_FOUND_PATH, PRODUCT_PATH } from 'constants/path'
 const ProductList = Loader(lazy(() => import('features/product/pages/ProductList')))
 
 // ==============================|| MAIN ROUTING ||============================== //
-
 const MainRoutes = {
   path: '/',
   element: (

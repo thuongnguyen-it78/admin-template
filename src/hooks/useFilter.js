@@ -1,14 +1,14 @@
 import _ from 'lodash'
 import queryString from 'query-string'
 import { useMemo } from 'react'
-import { unstable_HistoryRouter, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { defaultPagination } from 'utils/common'
 import { formatFilterBeforeSyncURL, formatFilterValue } from 'utils/filter'
 const defaultFilter = {}
 
 function useFilter(filterList) {
   const location = useLocation()
-  const history = unstable_HistoryRouter()
+  const history = useNavigate()
 
   const filter = useMemo(() => {
     const params = queryString.parse(location.search)
