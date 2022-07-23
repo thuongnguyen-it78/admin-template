@@ -1,3 +1,4 @@
+import HookFilter from 'commons/HookFilter'
 import { cloneDeep } from 'lodash'
 import queryString from 'query-string'
 import { useMemo } from 'react'
@@ -6,7 +7,7 @@ import { defaultPagination } from 'utils/common'
 import { formatFilterBeforeSyncURL, formatFilterValue } from 'utils/filter'
 const defaultFilter = {}
 
-function useFilter(filterList) {
+function useFilter(filterList, { filterForm, filterFormList }) {
   const location = useLocation()
   const navigation = useNavigate()
 
@@ -49,7 +50,23 @@ function useFilter(filterList) {
     })
   }
 
-  return { filter, onFilterChange: handleFilterChange, onResetFilter: handleResetFilter }
+  const FilterComponent = filterForm ? (
+    <HookFilter
+      key={1}
+      filter={filter}
+      filterList={filterFormList}
+      filterForm={filterForm}
+      onChange={handleFilterChange}
+      onReset={handleResetFilter}
+    />
+  ) : undefined
+
+  return {
+    filter,
+    FilterComponent: FilterComponent,
+    onFilterChange: handleFilterChange,
+    onResetFilter: handleResetFilter,
+  }
 }
 
 useFilter.propTypes = {}

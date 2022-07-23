@@ -59,34 +59,37 @@ function ProductList(props) {
     },
   ]
 
-  const { filter, onFilterChange, onResetFilter } = useFilter([
-    ...filterList,
-    {
-      name: 'perPage',
-      hookProps: {
-        dataType: 'number',
-        defaultValue: defaultPagination.perPage,
+  const { filter, FilterComponent, onFilterChange, onResetFilter } = useFilter(
+    [
+      ...filterList,
+      {
+        name: 'perPage',
+        hookProps: {
+          dataType: 'number',
+          defaultValue: defaultPagination.perPage,
+        },
       },
-    },
-    {
-      name: 'page',
-      hookProps: {
-        dataType: 'number',
-        defaultValue: defaultPagination.page,
+      {
+        name: 'page',
+        hookProps: {
+          dataType: 'number',
+          defaultValue: defaultPagination.page,
+        },
       },
-    },
-  ])
-
+    ],
+    { filterForm: filterForm, filterFormList: filterList }
+  )
 
   return (
     <CommonContent breadcrumb={breadcrumb}>
-      <ProductFilter
+      {/* <ProductFilter
         filter={filter}
         filterList={filterList}
         filterForm={filterForm}
         onChange={onFilterChange}
         onReset={onResetFilter}
-      />
+      /> */}
+      {FilterComponent}
       <ProductTable />
     </CommonContent>
   )
