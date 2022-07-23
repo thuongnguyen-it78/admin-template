@@ -1,21 +1,27 @@
-import _ from 'lodash'
+import { cloneDeep } from 'lodash'
 import queryString from 'query-string'
 import { useMemo } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { defaultPagination } from 'utils/common'
 import { formatFilterBeforeSyncURL, formatFilterValue } from 'utils/filter'
 const defaultFilter = {}
 
 function useFilter(filterList) {
   const location = useLocation()
-  const history = useNavigate()
+  const navigation = useNavigate()
 
   const filter = useMemo(() => {
     const params = queryString.parse(location.search)
 
     try {
       const queryParams = filterList
-        ? filterList.reduce((previous, current) => (previous[current.name] = formatFilterValue(current)), { ...params })
+        ? filterList.reduce(
+            (previous, current) => {
+              previous[current.name] = formatFilterValue({ value: params[current.name], ...current.hookProps })
+              return previous
+            },
+            { ...params }
+          )
         : defaultFilter
 
       return queryParams
@@ -25,21 +31,20 @@ function useFilter(filterList) {
   }, [location.search, filterList])
 
   const handleFilterChange = (newFilter) => {
-    const cloneFilter = _.cloneDeep(newFilter)
+    const cloneFilter = cloneDeep(newFilter)
     if (!cloneFilter.page) {
       cloneFilter.page = defaultPagination.page
     }
 
-
-    history.push({
-      pathname: history.location.pathname,
+    navigation({
+      pathname: location.pathname,
       search: queryString.stringify(formatFilterBeforeSyncURL({ ...filter, ...cloneFilter })),
     })
   }
 
   const handleResetFilter = () => {
-    history.push({
-      pathname: history.location.pathname,
+    navigation({
+      pathname: location.pathname,
       search: queryString.stringify(defaultFilter),
     })
   }
@@ -50,17 +55,3 @@ function useFilter(filterList) {
 useFilter.propTypes = {}
 
 export default useFilter
-
-// const columns = [
-//   {
-//     key: 'name',
-//     type: 'number',
-//     defaultValue: 0,
-//   },
-//   {
-//     key: 'statusIds',
-//     type: 'array',
-//     defaultValue: [],
-//     split: ',',
-//   },
-// ]

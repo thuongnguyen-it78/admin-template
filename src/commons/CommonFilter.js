@@ -48,8 +48,8 @@ function CommonFilter({ isExpand = true, dataSource = [], form, onReset, onFinis
 
   return (
     <Form form={form} onFinish={onFinish} className="common-filter">
-      <FilterCard isExpand={isExpand} resetFilter={onReset}>
-        <Row gutter={[8, 8]}>{dataSource?.map((item) => renderFilterItem(item))}</Row>
+      <FilterCard isExpand={isExpand} onReset={onReset}>
+        <Row gutter={[8, 8]}>{dataSource?.map(({ name, formProps }) => renderFilterItem({ name, ...formProps }))}</Row>
       </FilterCard>
     </Form>
   )

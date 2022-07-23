@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { cloneDeep } from 'lodash'
 import moment from 'moment'
 
 const dateKeyList = [
@@ -19,7 +19,7 @@ const dateKeyList = [
 ]
 
 export const formatValueFilter = (filter) => {
-  let cloneFilter = _.cloneDeep(filter)
+  let cloneFilter = cloneDeep(filter)
   for (const filterKey in cloneFilter) {
     // process date
     if (dateKeyList.includes(filterKey) && cloneFilter[filterKey]) {
@@ -30,7 +30,7 @@ export const formatValueFilter = (filter) => {
 }
 
 export const formatFilterBeforeSyncURL = (filter) => {
-  const cloneFilter = _.cloneDeep(filter)
+  const cloneFilter = cloneDeep(filter)
   for (let filterKey in cloneFilter) {
     // process date
     if (dateKeyList.includes(filterKey) && cloneFilter[filterKey]) {

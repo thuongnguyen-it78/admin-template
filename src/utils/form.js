@@ -1,27 +1,27 @@
-import moment from "moment"
+import moment from 'moment'
 
-export const checkDisableFrom = (start, field, form, disableAfterCurrent = true) => {
-  if (disableAfterCurrent && start.valueOf() > moment().valueOf()) {
+export const checkDisableFrom = (startDate, endDateField, form, disableAfterToday = true) => {
+  if (disableAfterToday && startDate.valueOf() > moment().valueOf()) {
     return true
   }
 
-  const end = form.getFieldValue(field)
-  if (!start || !end) {
+  const endDate = form.getFieldValue(endDateField)
+  if (!startDate || !endDate) {
     return false
   }
 
-  return start.valueOf() > end.valueOf()
+  return startDate.valueOf() > endDate.valueOf()
 }
 
-export const checkDisableTo = (end, field, form, disableAfterCurrent = true) => {
-  if (disableAfterCurrent && end.valueOf() > moment().valueOf()) {
+export const checkDisableTo = (endDate, startDateField, form, disableAfterToday = true) => {
+  if (disableAfterToday && endDate.valueOf() > moment().valueOf()) {
     return true
   }
 
-  const start = form.getFieldValue(field)
-  if (!start || !end) {
+  const startDate = form.getFieldValue(startDateField)
+  if (!startDate || !endDate) {
     return false
   }
 
-  return end.valueOf() <= start.valueOf()
+  return endDate.valueOf() <= startDate.valueOf()
 }
