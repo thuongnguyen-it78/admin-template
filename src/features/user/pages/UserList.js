@@ -111,8 +111,6 @@ function ProductList(props) {
     total: data?.total,
   }
 
-  console.log(data)
-
   return (
     <CommonContent breadcrumb={breadcrumb} isError={isError}>
       <HookFilter

@@ -1,6 +1,5 @@
 import CommonFilter from 'commons/CommonFilter'
 import { useEffect } from 'react'
-import { formatValueFilter } from 'utils/filter'
 import { resetObject } from 'utils/object'
 
 function HookFilter({ filter, filterList, filterForm, onChange, onReset }) {
@@ -10,8 +9,7 @@ function HookFilter({ filter, filterList, filterForm, onChange, onReset }) {
   }
 
   useEffect(() => {
-    let cloneFilter = formatValueFilter(filter)
-    filterForm.setFieldsValue(cloneFilter)
+    filterForm.setFieldsValue(filter)
   }, [filter, filterForm])
 
   const handleFinish = (values) => {
