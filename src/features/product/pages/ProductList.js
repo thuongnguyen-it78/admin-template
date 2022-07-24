@@ -79,7 +79,7 @@ function ProductList(props) {
     },
   ])
 
-  const { data, isLoading, isError } = useQuery(['users', apiFilter], () => productAPI.getAll(apiFilter))
+  const { data, isLoading, isError } = useQuery(['product-list', apiFilter], () => productAPI.getAll(apiFilter))
 
   const handlePageChange = ({ current, pageSize }) => {
     onFilterChange({ perPage: pageSize, page: current })
