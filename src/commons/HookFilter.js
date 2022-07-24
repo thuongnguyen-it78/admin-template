@@ -12,7 +12,6 @@ function HookFilter({ filter, filterList, filterForm, onChange, onReset }) {
   useEffect(() => {
     let cloneFilter = formatValueFilter(filter)
     filterForm.setFieldsValue(cloneFilter)
-    return () => console.log("un mount")
   }, [filter, filterForm])
 
   const handleFinish = (values) => {

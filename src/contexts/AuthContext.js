@@ -1,9 +1,10 @@
+import { localStorageKeys } from 'constants/config'
 import useLocalStorage from 'hooks/useLocalStorage'
 import { createContext } from 'react'
 export const AuthContext = createContext()
 
 function AuthProvider({ children }) {
-  const [auth, setAuth] = useLocalStorage('auth', {
+  const [auth, setAuth] = useLocalStorage(localStorageKeys.AUTH, {
     user: {
       name: 'Andres Nguyen',
     },

@@ -2,10 +2,12 @@ import { Form } from 'antd'
 import CommonContent from 'commons/CommonContent'
 import { userStatusList } from 'constants/user'
 import useFilter from 'hooks/useFilter'
-import { defaultPagination } from 'utils/common'
+import { defaultPagination } from 'constants/common'
 import { checkDisableFrom, checkDisableTo } from 'utils/form'
 import ProductFilter from '../components/ProductFilter'
 import ProductTable from '../components/ProductTable'
+import productAPI from 'api/productAPI'
+import { useQuery } from '@tanstack/react-query'
 
 function ProductList(props) {
   const breadcrumb = [{ path: '', active: true, name: 'Danh sách sản phẩm' }]
@@ -59,26 +61,32 @@ function ProductList(props) {
     },
   ]
 
-  const { filter, onFilterChange, onResetFilter } = useFilter([
+  const { filter, apiFilter, onFilterChange, onResetFilter } = useFilter([
     ...filterList,
     {
       name: 'perPage',
       hookProps: {
-        dataType: 'number',
+        type: 'number',
         defaultValue: defaultPagination.perPage,
       },
     },
     {
       name: 'page',
       hookProps: {
-        dataType: 'number',
+        type: 'number',
         defaultValue: defaultPagination.page,
       },
     },
   ])
 
+  const { data, isLoading, isError } = useQuery(['users', apiFilter], () => productAPI.getAll(apiFilter))
+
+  const handlePageChange = ({ current, pageSize }) => {
+    onFilterChange({ perPage: pageSize, page: current })
+  }
+
   return (
-    <CommonContent breadcrumb={breadcrumb}>
+    <CommonContent breadcrumb={breadcrumb} isError={isError}>
       <ProductFilter
         filter={filter}
         filterList={filterList}
@@ -86,7 +94,7 @@ function ProductList(props) {
         onChange={onFilterChange}
         onReset={onResetFilter}
       />
-      <ProductTable />
+      <ProductTable data={data} isLoading={isLoading} onPageChange={handlePageChange} />
     </CommonContent>
   )
 }

@@ -1,7 +1,7 @@
 import { ConfigProvider as AntDConfigProvider } from 'antd'
 import 'antd/dist/antd.min.css'
 import NavigationScroll from 'commons/NavigationScroll'
-import { antDConfig } from 'config'
+import { antDConfig } from 'constants/config'
 import AuthProvider from 'contexts/AuthContext'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
@@ -15,7 +15,14 @@ import ConfigProvider from './contexts/ConfigContext'
 import reportWebVitals from './reportWebVitals'
 import store from './store'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false,
+    }
+  }
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

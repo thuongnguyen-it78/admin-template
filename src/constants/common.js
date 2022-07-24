@@ -1,4 +1,4 @@
-const defaultPagination = {
+export const defaultPagination = {
   page: 0,
-  size: 10,
+  perPage: 10,
 }

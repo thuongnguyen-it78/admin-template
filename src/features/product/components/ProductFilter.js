@@ -1,18 +1,15 @@
 import CommonFilter from 'commons/CommonFilter'
 import { useEffect } from 'react'
-import { formatValueFilter } from 'utils/filter'
 import { resetObject } from 'utils/object'
 
 function ProductFilter({ filter, filterList, filterForm, onChange, onReset }) {
-  console.log({filter})
   const handleResetFilter = () => {
     filterForm.setFieldsValue(resetObject(filter))
     onReset?.()
   }
 
   useEffect(() => {
-    let cloneFilter = formatValueFilter(filter)
-    filterForm.setFieldsValue(cloneFilter)
+    filterForm.setFieldsValue(filter)
   }, [filter, filterForm])
 
   const handleFinish = (values) => {

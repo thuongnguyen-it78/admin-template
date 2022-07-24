@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { API_URL } from 'config'
+import { getAccessToken, logOut } from 'utils/common'
+import { API_URL } from '../constants/config'
 
 const axiosClient = axios.create({
   baseURL: API_URL,
@@ -13,7 +14,7 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use(
   function (config) {
     // Do something before request is sent
-    const token = localStorage.getItem(AUTH_KEYS.ACCESS_TOKEN)
+    const token = getAccessToken()
     if (token) {
       config.headers.common['Authorization'] = 'Bearer ' + token
     }
@@ -38,6 +39,7 @@ axiosClient.interceptors.response.use(
     // Do something with response error
     if (error?.response?.status === 401) {
       // clear token ...
+      logOut()
       window.location.replace('/')
     }
 

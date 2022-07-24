@@ -2,25 +2,26 @@ import { cloneDeep } from 'lodash'
 import queryString from 'query-string'
 import { useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { defaultPagination } from 'utils/common'
+import { defaultPagination } from 'constants/common'
 import { formatFilterBeforeSyncURL, formatFilterValue } from 'utils/filter'
-const defaultFilter = {}
+const defaultFilter = { filter: {}, apiFilter: {} }
 
 function useFilter(filterList) {
   const location = useLocation()
   const navigation = useNavigate()
 
-  const filter = useMemo(() => {
+  const { filter, apiFilter } = useMemo(() => {
     const params = queryString.parse(location.search)
 
     try {
       const queryParams = filterList
         ? filterList.reduce(
             (previous, current) => {
-              previous[current.name] = formatFilterValue({ value: params[current.name], ...current.hookProps })
+              previous.filter[current.name] = formatFilterValue({ value: params[current.name], ...current.hookProps })
+              previous.apiFilter[current.name] = params[current.name]
               return previous
             },
-            { ...params }
+            { filter: { ...params }, apiFilter: { ...params } }
           )
         : defaultFilter
 
@@ -45,12 +46,13 @@ function useFilter(filterList) {
   const handleResetFilter = () => {
     navigation({
       pathname: location.pathname,
-      search: queryString.stringify(defaultFilter),
+      search: queryString.stringify({}),
     })
   }
 
   return {
     filter,
+    apiFilter,
     onFilterChange: handleFilterChange,
     onResetFilter: handleResetFilter,
   }
