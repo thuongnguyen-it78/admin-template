@@ -4,10 +4,12 @@ import AuthGuard from 'commons/AuthGuard'
 import MainLayout from 'commons/layout/MainLayout'
 import Loader from 'commons/Loader'
 import NotFound from 'commons/NotFound'
-import { DASHBOARD_PATH, NOT_FOUND_PATH, PRODUCT_PATH } from 'constants/path'
+import { DASHBOARD_PATH, NOT_FOUND_PATH, PRODUCT_PATH, USER_PATH } from 'constants/path'
 
 // product routing
 const ProductList = Loader(lazy(() => import('features/product/pages/ProductList')))
+const UserList = Loader(lazy(() => import('features/user/pages/UserList')))
+
 
 // ==============================|| MAIN ROUTING ||============================== //
 const MainRoutes = {
@@ -25,6 +27,10 @@ const MainRoutes = {
     {
       path: PRODUCT_PATH,
       element: <ProductList />,
+    },
+    {
+      path: USER_PATH,
+      element: <UserList />,
     },
     {
       path: NOT_FOUND_PATH,

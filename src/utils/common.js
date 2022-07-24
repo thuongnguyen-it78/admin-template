@@ -1,3 +1,4 @@
+import { Tag } from 'antd'
 import { localStorageKeys } from 'constants/config'
 import moment from 'moment'
 
@@ -16,7 +17,7 @@ export function unAccent(str) {
 }
 
 export const getAccessToken = () => {
-  return localStorage.getItem(localStorageKeys.AUTH)?.token
+  return JSON.parse(localStorage.getItem(localStorageKeys.AUTH))?.token
 }
 
 export const logOut = () => {
@@ -29,6 +30,12 @@ export const findInArr = (array, comparativeValue, comparativeField = 'id', retu
 
   const result = array.find((item) => item?.[comparativeField] === comparativeValue)
   return result && returnKey ? result?.[returnKey] : result
+}
+
+export const findAndRenderStatus = (statusList, value) => {
+  const status = findInArr(statusList, value)
+
+  return status && <Tag color={status.color}>{status.name}</Tag>
 }
 
 export const formatDateToString = (string, type = 'lv1') => {

@@ -1,19 +1,29 @@
+import { useQuery } from '@tanstack/react-query'
 import { Form } from 'antd'
+import userAPI from 'api/userAPI'
 import CommonContent from 'commons/CommonContent'
+import HookFilter from 'commons/HookFilter'
+import { defaultPagination } from 'constants/common'
 import { userStatusList } from 'constants/user'
 import useFilter from 'hooks/useFilter'
-import { defaultPagination } from 'constants/common'
 import { checkDisableFrom, checkDisableTo } from 'utils/form'
-import ProductFilter from '../components/ProductFilter'
-import ProductTable from '../components/ProductTable'
-import productAPI from 'api/productAPI'
-import { useQuery } from '@tanstack/react-query'
+import UserTable from '../components/UserTable'
 
 function ProductList(props) {
-  const breadcrumb = [{ path: '', active: true, name: 'Danh sách sản phẩm' }]
+  const breadcrumb = [{ path: '', active: true, name: 'Danh sách người dùng' }]
   const [filterForm] = Form.useForm()
 
   const filterList = [
+    {
+      name: 'id',
+      hookProps: {
+        type: 'number',
+      },
+      formProps: {
+        type: 'number',
+        placeholder: 'ID',
+      },
+    },
     {
       name: 'name',
       hookProps: {
@@ -22,6 +32,16 @@ function ProductList(props) {
       formProps: {
         type: 'input',
         placeholder: 'Tên',
+      },
+    },
+    {
+      name: 'phone',
+      hookProps: {
+        type: 'string',
+      },
+      formProps: {
+        type: 'input',
+        placeholder: 'Số điện thoại',
       },
     },
     {
@@ -79,22 +99,30 @@ function ProductList(props) {
     },
   ])
 
-  const { data, isLoading, isError } = useQuery(['product-list', apiFilter], () => productAPI.getAll(apiFilter))
+  const { data, isLoading, isError } = useQuery(['user-list', apiFilter], () => userAPI.getAll(apiFilter))
 
   const handlePageChange = ({ current, pageSize }) => {
     onFilterChange({ perPage: pageSize, page: current })
   }
 
+  const pagination = {
+    page: filter.page,
+    perPage: filter.perPage,
+    total: data?.total,
+  }
+
+  console.log(data)
+
   return (
-    <CommonContent breadcrumb={breadcrumb} isError={false}>
-      <ProductFilter
+    <CommonContent breadcrumb={breadcrumb} isError={isError}>
+      <HookFilter
         filter={filter}
         filterList={filterList}
         filterForm={filterForm}
         onChange={onFilterChange}
         onReset={onResetFilter}
       />
-      <ProductTable data={data} isLoading={isLoading} onPageChange={handlePageChange} />
+      <UserTable data={data?.data} pagination={pagination} isLoading={isLoading} onPageChange={handlePageChange} />
     </CommonContent>
   )
 }

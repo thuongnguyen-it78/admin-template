@@ -12,6 +12,8 @@ function CommonTable({ dataSource, columns, name, isLoading, pagination, onPageC
     [pagination]
   )
 
+  console.log(dataSource, newPagination)
+
   return (
     <CommonCard title={`Danh sách ${name ? name : ''}`.toUpperCase()}>
       <Table

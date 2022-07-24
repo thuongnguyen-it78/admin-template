@@ -1,4 +1,4 @@
 export const defaultPagination = {
-  page: 0,
+  page: 1,
   perPage: 10,
 }
