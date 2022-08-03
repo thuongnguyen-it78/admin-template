@@ -1,4 +1,4 @@
-import { Tag } from "antd"
+import { Select, Tag } from 'antd'
 
 export const findInArr = (array, comparativeValue, comparativeField = 'id', returnKey) => {
   if (!Array.isArray(array) || array?.length === 0) return undefined
@@ -16,4 +16,14 @@ export const findAndRenderStatus = (statusList, value) => {
 export const mapOrder = (array, order, key) => {
   array.sort((a, b) => order.indexOf(a[key]) - order.indexOf(b[key]))
   return array
+}
+
+export const renderOptionList = ({ optionList, valueKey = 'id', labelKey = 'name', selector }) => {
+  if (!Array.isArray(array) || array?.length === 0) return undefined
+
+  return optionList?.map((option) => (
+    <Select.Option key={option[valueKey]} value={option[valueKey]}>
+      {selector ? selector(option) : item[labelKey]}
+    </Select.Option>
+  ))
 }

@@ -1,5 +1,5 @@
 function MainFooter(props) {
-  return <footer className="text-center">Created by Andres by heart</footer>
+  return <footer className="text-center">Created by Andres with heart</footer>
 }
 
 MainFooter.propTypes = {}
