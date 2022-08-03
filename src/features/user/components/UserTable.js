@@ -1,6 +1,7 @@
 import CommonTable from 'commons/CommonTable'
 import { userStatusList } from 'constants/user'
-import { findAndRenderStatus, formatDateToString } from 'utils/common'
+import { findAndRenderStatus } from 'utils/array'
+import { formatDateToString } from 'utils/date'
 
 function UserTable({ data, loading, pagination, onPageChange }) {
   const columns = [

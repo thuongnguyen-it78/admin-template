@@ -86,7 +86,7 @@ function ProductList(props) {
   }
 
   return (
-    <CommonContent breadcrumb={breadcrumb} isError={false}>
+    <CommonContent breadcrumb={breadcrumb} isError={isError}>
       <ProductFilter
         filter={filter}
         filterList={filterList}

@@ -19,11 +19,11 @@ export const mapOrder = (array, order, key) => {
 }
 
 export const renderOptionList = ({ optionList, valueKey = 'id', labelKey = 'name', selector }) => {
-  if (!Array.isArray(array) || array?.length === 0) return undefined
+  if (!Array.isArray(optionList) || optionList?.length === 0) return undefined
 
   return optionList?.map((option) => (
     <Select.Option key={option[valueKey]} value={option[valueKey]}>
-      {selector ? selector(option) : item[labelKey]}
+      {selector ? selector(option) : option[labelKey]}
     </Select.Option>
   ))
 }

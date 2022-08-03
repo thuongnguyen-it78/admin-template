@@ -4,14 +4,14 @@ import { DownloadOutlined } from '@ant-design/icons'
 import moment from 'moment'
 import FileDownload from 'js-file-download'
 
-const ExportButton = ({ label, fileName, func, buttonProps }) => {
+const ExportButton = ({ label, fileName, exportAPI, buttonProps }) => {
   const [exporting, setExport] = useState(false)
 
   const exportFile = async () => {
     setExport(true)
     const name = fileName + '_' + moment().format('DDMMYYYY-HHmm') + '.xlsx'
     try {
-      const response = await func()
+      const response = await exportAPI()
       if (res) {
         FileDownload(response, name.replace(/\s/gm, '_'))
       } else {
