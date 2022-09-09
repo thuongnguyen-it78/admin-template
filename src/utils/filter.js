@@ -10,7 +10,7 @@ export const formatFilterBeforeSyncURL = (filter) => {
     }
 
     // process undefined and null value
-    if (cloneFilter[filterKey] === null || cloneFilter[filterKey] === undefined) {
+    if (cloneFilter[filterKey] === null || cloneFilter[filterKey] === undefined || cloneFilter[filterKey] === '') {
       delete cloneFilter[filterKey]
     }
   }

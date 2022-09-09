@@ -1,21 +1,33 @@
+import { EyeOutlined, PlusOutlined } from '@ant-design/icons/'
+import { Button, Space } from 'antd'
 import CommonTable from 'commons/CommonTable'
+import ExportButton from 'commons/ExportButton'
 import { userStatusList } from 'constants/user'
+import { Link } from 'react-router-dom'
 import { findAndRenderStatus } from 'utils/array'
-import { formatDateToString } from 'utils/date'
 
-function UserTable({ data, loading, pagination, onPageChange }) {
+function UserTable({ data, isLoading, pagination, onPageChange }) {
   const columns = [
     {
       title: 'ID',
       dataIndex: 'id',
+      width: 100,
     },
     {
-      title: 'Tên',
+      title: 'Tên người dùng',
       dataIndex: 'name',
     },
     {
-      title: 'Username',
-      dataIndex: 'user_name',
+      title: 'Email',
+      dataIndex: 'email',
+    },
+    {
+      title: 'SĐT',
+      dataIndex: 'phone',
+    },
+    {
+      title: 'Phân quyền',
+      dataIndex: 'role_id',
     },
     {
       title: 'Trạng thái',
@@ -23,17 +35,40 @@ function UserTable({ data, loading, pagination, onPageChange }) {
       render: (value) => findAndRenderStatus(userStatusList, value),
     },
     {
-      title: 'Ngày tạo',
-      dataIndex: 'created_at',
-      render: (value) => formatDateToString(value),
+      title: 'Hành động',
+      width: 150,
+      fixed: 'right',
+      align: 'center',
+      render: (value) => {
+        return (
+          <Link
+            to={{
+              pathname: `/users/${value.id}`,
+            }}
+          >
+            <Button type="primary" icon={<EyeOutlined />} />
+          </Link>
+        )
+      },
     },
   ]
 
+  const renderExtra = () => {
+    return (
+      <Space>
+        <ExportButton title="Xuất dữ liệu" file_name="Users" />
+        <Button icon={<PlusOutlined />} type="primary">
+          Thêm người dùng
+        </Button>
+      </Space>
+    )
+  }
+
   return (
     <CommonTable
-      name="người dùng"
+      cardProps={{ extra: renderExtra() }}
       pagination={pagination}
-      isLoading={loading}
+      isLoading={isLoading}
       dataSource={data}
       columns={columns}
       onPageChange={onPageChange}

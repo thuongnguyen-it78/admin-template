@@ -46,8 +46,8 @@ let navItems = [
 
 function getNavList(navList) {
   return navList.map(({ label, key, icon, children, path }) => ({
-    key,
     icon,
+    key: label,
     children: children && getNavList(children),
     label: children ? label : <Link to={path}>{label}</Link>,
   }))

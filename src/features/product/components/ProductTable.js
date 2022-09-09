@@ -1,6 +1,6 @@
 import CommonTable from 'commons/CommonTable'
 
-function ProductTable({ data, loading, pagination, onPageChange }) {
+function ProductTable({ data, isLoading, pagination, onPageChange }) {
   const columns = [
     {
       title: 'Mã thành viên',
@@ -40,7 +40,7 @@ function ProductTable({ data, loading, pagination, onPageChange }) {
   return (
     <CommonTable
       pagination={pagination}
-      isLoading={loading}
+      isLoading={isLoading}
       dataSource={data}
       columns={columns}
       onPageChange={onPageChange}

@@ -15,3 +15,11 @@ export const requiredLabel = (label) => (
     {label} <span style={{ color: Color.red }}>*</span>
   </span>
 )
+
+export const getItemLocalStorage = (key) => {
+  return JSON.parse(localStorage.getItem(key))
+}
+
+export const setItemLocalStorage = (key, value) => {
+  return localStorage.setItem(key, JSON.stringify(value))
+}

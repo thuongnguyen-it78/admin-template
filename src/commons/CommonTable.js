@@ -2,7 +2,7 @@ import { Table } from 'antd'
 import { useMemo } from 'react'
 import CommonCard from './CommonCard'
 
-function CommonTable({ dataSource, columns, name, isLoading, pagination, onPageChange }) {
+function CommonTable({ dataSource, columns, name, isLoading, pagination, onPageChange, cardProps }) {
   const newPagination = useMemo(
     () => ({
       total: pagination?.total,
@@ -13,7 +13,7 @@ function CommonTable({ dataSource, columns, name, isLoading, pagination, onPageC
   )
 
   return (
-    <CommonCard title={`Danh sách ${name ? name : ''}`.toUpperCase()}>
+    <CommonCard title={`Danh sách ${name ? name : ''}`.toUpperCase()} {...cardProps}>
       <Table
         rowKey="id"
         dataSource={dataSource || []}

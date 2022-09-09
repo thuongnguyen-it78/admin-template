@@ -31,7 +31,7 @@ function useFilter(filterList) {
     }
   }, [location.search, filterList])
 
-  const handleFilterChange = (newFilter) => {
+  const handleFilterChange = (newFilter) => {    
     const cloneFilter = cloneDeep(newFilter)
     if (!cloneFilter.page) {
       cloneFilter.page = defaultPagination.page

@@ -94,7 +94,7 @@ function ProductList(props) {
         onChange={onFilterChange}
         onReset={onResetFilter}
       />
-      <ProductTable data={data} isLoading={isLoading} onPageChange={handlePageChange} />
+      <ProductTable data={data?.data || []} isLoading={isLoading} onPageChange={handlePageChange} />
     </CommonContent>
   )
 }

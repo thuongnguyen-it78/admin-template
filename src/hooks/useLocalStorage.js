@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react'
 export default function useLocalStorage(key, defaultValue) {
   const [value, setValue] = useState(() => {
     const storedValue = localStorage.getItem(key)
-    return storedValue === null
-      ? localStorage.setItem(key, JSON.stringify(defaultValue)) || defaultValue
-      : JSON.parse(storedValue)
+    try {
+      return storedValue === null ? localStorage.setItem(key, JSON.stringify(defaultValue)) : JSON.parse(storedValue)
+    } catch (error) {
+      localStorage.removeItem(key)
+    }
   })
 
   useEffect(() => {
