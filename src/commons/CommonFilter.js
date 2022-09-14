@@ -38,7 +38,7 @@ function CommonFilter({ isExpand = true, dataSource = [], form, onReset, onFinis
     }
 
     return (
-      <Col xxl={6} lg={8} md={12} key={name}>
+      <Col xxl={4} lg={8} md={12} sm={12} xs={24} key={name}>
         <Form.Item className="mb-2" name={name} {...formProps}>
           <Component className="w-100" allowClear {...rest} />
         </Form.Item>

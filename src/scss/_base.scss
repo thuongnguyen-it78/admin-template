@@ -10,9 +10,10 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: subpixel-antialiased;
   word-wrap: break-word;
+  font-size: 1rem;
 
   @include mobile {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 }
 

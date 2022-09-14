@@ -5,10 +5,10 @@ import moment from 'moment'
 import FileDownload from 'js-file-download'
 
 const ExportButton = ({ children, fileName, exportAPI, buttonProps }) => {
-  const [exporting, setExport] = useState(false)
+  const [exporting, setExporting] = useState(false)
 
   const exportFile = async () => {
-    setExport(true)
+    setExporting(true)
     const name = fileName + '_' + moment().format('DDMMYYYY-HHmm') + '.xlsx'
     try {
       const response = await exportAPI()
@@ -17,10 +17,10 @@ const ExportButton = ({ children, fileName, exportAPI, buttonProps }) => {
       } else {
         message.error('Xuất dữ liệu lỗi. Kiểm tra kết nối hệ thống')
       }
-      setExport(false)
+      setExporting(false)
     } catch (error) {
       message.error('Xuất dữ liệu lỗi. Kiểm tra kết nối hệ thống')
-      setExport(false)
+      setExporting(false)
     }
   }
 

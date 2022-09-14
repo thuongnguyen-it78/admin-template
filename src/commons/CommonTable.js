@@ -13,7 +13,7 @@ function CommonTable({ dataSource, columns, name, isLoading, pagination, onPageC
   )
 
   return (
-    <CommonCard title={`Danh sách ${name ? name : ''}`.toUpperCase()} {...cardProps}>
+    <CommonCard title={<b>{`Danh sách ${name ? name : ''}`.toUpperCase()}</b>} {...cardProps}>
       <Table
         rowKey="id"
         dataSource={dataSource || []}
