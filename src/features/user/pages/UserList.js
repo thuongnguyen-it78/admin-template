@@ -69,6 +69,7 @@ function UserList(props) {
       hookProps: {
         type: 'number',
         defaultValue: defaultPagination.perPage,
+        isDefaultAPI: true,
       },
     },
     {
@@ -76,6 +77,7 @@ function UserList(props) {
       hookProps: {
         type: 'number',
         defaultValue: defaultPagination.page,
+        isDefaultAPI: true,
       },
     },
   ])
@@ -91,11 +93,6 @@ function UserList(props) {
     perPage: filter.perPage,
     total: userList?.pageInfo?.total,
   }
-
-  console.log(userList?.data, pagination.total)
-
-  console.log(apiFilter);
-  
 
   const handlePageChange = ({ current, pageSize }) => {
     onFilterChange({ perPage: pageSize, page: current })

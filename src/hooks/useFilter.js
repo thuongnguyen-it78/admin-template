@@ -18,7 +18,9 @@ function useFilter(filterList) {
         ? filterList.reduce(
             (previous, current) => {
               previous.filter[current.name] = formatFilterValue({ value: params[current.name], ...current.hookProps })
-              previous.apiFilter[current.name] = params[current.name]
+              previous.apiFilter[current.name] =
+                params[current.name] ||
+                (current?.hookProps?.isDefaultAPI ? current?.hookProps?.defaultValue : params[current.name])
               return previous
             },
             { filter: { ...params }, apiFilter: { ...params } }
@@ -31,7 +33,7 @@ function useFilter(filterList) {
     }
   }, [location.search, filterList])
 
-  const handleFilterChange = (newFilter) => {    
+  const handleFilterChange = (newFilter) => {
     const cloneFilter = cloneDeep(newFilter)
     if (!cloneFilter.page) {
       cloneFilter.page = defaultPagination.page

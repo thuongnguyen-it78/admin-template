@@ -9,9 +9,9 @@ export default function FilterCard({ name, children, onReset, isExpand, noneBord
   return (
     <CommonCard
       title={
-        <b onClick={() => setExpand(!expand)} style={{ cursor: 'pointer', userSelect: 'none' }}>
+        <span onClick={() => setExpand(!expand)} style={{ cursor: 'pointer', userSelect: 'none' }}>
           {expand ? <CaretDownFilled /> : <CaretUpFilled />} {`Bộ lọc ${name ? name : ''}`.toUpperCase()}
-        </b>
+        </span>
       }
       className={`${!expand ? 'filter-card-small mb-3' : 'mb-3'} ${className || ''} filter-card common-shadow`}
       bordered={noneBorder ? false : true}

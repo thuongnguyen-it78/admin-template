@@ -7,7 +7,6 @@ export const getAccessToken = () => {
 
 export const logOut = () => {
   localStorage.removeItem(localStorageKeys.AUTH)
-  return true
 }
 
 export const requiredLabel = (label) => (

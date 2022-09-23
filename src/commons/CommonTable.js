@@ -16,10 +16,10 @@ function CommonTable({ dataSource, columns, name, isLoading, pagination, onPageC
   return (
     <CommonCard
       title={
-        <b>
+        <span>
           <TableOutlined style={{ marginRight: 5 }} />
           {`Danh sách ${name ? name : ''}`.toUpperCase()}
-        </b>
+        </span>
       }
       {...cardProps}
     >

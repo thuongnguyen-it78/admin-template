@@ -1,9 +1,15 @@
-import { Card } from 'antd'
+import { Card, Spin } from 'antd'
+import clsx from 'clsx'
 
-function CommonCard({ children, ...rest }) {
+function CommonCard({ title, children, isLoading, className, ...rest }) {
   return (
-    <Card size="small" {...rest}>
-      {children}
+    <Card
+    size="small"
+      title={title && <b>{title}</b>}
+      className={clsx('common-card', className && className)}
+      {...rest}
+    >
+      <Spin spinning={Boolean(isLoading)}>{children}</Spin>
     </Card>
   )
 }

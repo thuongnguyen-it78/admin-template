@@ -1,5 +1,5 @@
-import { EyeOutlined, PlusOutlined } from '@ant-design/icons/'
-import { Button, Space } from 'antd'
+import { Space } from 'antd'
+import { AddButton, ViewButton } from 'commons/CommonButton'
 import CommonTable from 'commons/CommonTable'
 import ExportButton from 'commons/ExportButton'
 import { userStatusList } from 'constants/user'
@@ -46,7 +46,7 @@ function UserTable({ data, isLoading, pagination, onPageChange }) {
               pathname: `/users/${value.id}`,
             }}
           >
-            <Button type="primary" icon={<EyeOutlined />} />
+            <ViewButton />
           </Link>
         )
       },
@@ -58,9 +58,7 @@ function UserTable({ data, isLoading, pagination, onPageChange }) {
       <Space>
         <ExportButton title="Xuất dữ liệu" file_name="Users" />
         <Link to="/users/add">
-          <Button icon={<PlusOutlined />} type="primary">
-            Thêm người dùng
-          </Button>
+          <AddButton>Thêm người dùng</AddButton>
         </Link>
       </Space>
     )

@@ -1,4 +1,5 @@
 import { Col, DatePicker, Form, Input, InputNumber, Row, Select } from 'antd'
+import { useMemo } from 'react'
 import FilterCard from './FilterCard'
 
 function CommonFilter({ isExpand = true, dataSource = [], form, onReset, onFinish }) {
@@ -29,7 +30,6 @@ function CommonFilter({ isExpand = true, dataSource = [], form, onReset, onFinis
             </Select.Option>
           ))
         }
-
         break
 
       default:
@@ -46,10 +46,14 @@ function CommonFilter({ isExpand = true, dataSource = [], form, onReset, onFinis
     )
   }
 
+  const filterItemList = useMemo(() => {
+    return dataSource?.map(({ name, formProps }) => renderFilterItem({ name, ...formProps }))
+  }, [dataSource])
+
   return (
     <Form form={form} onFinish={onFinish} className="common-filter">
       <FilterCard isExpand={isExpand} onReset={onReset}>
-        <Row gutter={[8, 8]}>{dataSource?.map(({ name, formProps }) => renderFilterItem({ name, ...formProps }))}</Row>
+        <Row gutter={[8, 8]}>{filterItemList}</Row>
       </FilterCard>
     </Form>
   )
