@@ -10,12 +10,12 @@
 
 // <COMPONENT FILTER CARD>
 .filter-card {
-  transition: max-height 0.4s;
+  transition: max-height 0.05s;
   max-height: 500px;
 }
 
 .filter-card-small {
-  max-height: 60px;
+  max-height: 49px;
   overflow: hidden;
 }
 // </COMPONENT FILTER CARD>
@@ -23,7 +23,6 @@
 // <COMPONENT MAIN LAYOUT>
 .main-layout {
   min-height: 100vh;
-
   $sider-trigger-height: 48px;
   $sider-height: calc(100vh - #{$sider-trigger-height} - 1px);
 
@@ -43,7 +42,7 @@
   }
 
   .sub-main-layout-header {
-    background: #f9652a;
+    background-color: #e67e22;
     padding: 0 16px;
     height: $header-height;
     position: fixed;
@@ -69,6 +68,11 @@
       color: #000;
     }
   }
+
+  .ant-layout-footer {
+    padding: 10px 50px;
+    color: #767676;
+  }
 }
 // </COMPONENT MAIN LAYOUT>
 
@@ -83,17 +87,19 @@
     height: calc(#{$header-height}* 0.8);
     display: flex;
     align-items: center;
+    user-select: none;
 
     img {
       height: 100%;
+      margin-right: 5px;
     }
 
     &-text {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 25px;
+      font-weight: 800;
       letter-spacing: 1px;
-      color: #fff;
       line-height: 50px;
+      color: #f5f5f5;
     }
   }
 }
@@ -117,7 +123,6 @@
     text-align: left;
   }
 }
-
 
 .common-breadcrumb {
   font-size: 16px;

@@ -1,15 +1,19 @@
-import { ClearOutlined, DownOutlined, SearchOutlined, UpOutlined } from '@ant-design/icons'
+import { ClearOutlined, CaretDownFilled, SearchOutlined, CaretUpFilled } from '@ant-design/icons'
 import { Button, Space } from 'antd'
 import { useState } from 'react'
 import CommonCard from './CommonCard'
 
-export default function FilterCard({ children, onReset, isExpand, noneBorder, className }) {
+export default function FilterCard({ name, children, onReset, isExpand, noneBorder, className }) {
   const [expand, setExpand] = useState(isExpand)
 
   return (
     <CommonCard
-      title="BỘ LỌC"
-      className={`${!expand ? 'filter-card-small mb-3' : 'mb-3'} ${className || ''} filter-card`}
+      title={
+        <b onClick={() => setExpand(!expand)} style={{ cursor: 'pointer', userSelect: 'none' }}>
+          {expand ? <CaretDownFilled /> : <CaretUpFilled />} {`Bộ lọc ${name ? name : ''}`.toUpperCase()}
+        </b>
+      }
+      className={`${!expand ? 'filter-card-small mb-3' : 'mb-3'} ${className || ''} filter-card common-shadow`}
       bordered={noneBorder ? false : true}
       extra={
         <Space>
@@ -18,9 +22,6 @@ export default function FilterCard({ children, onReset, isExpand, noneBorder, cl
           </Button>
           <Button type="primary" htmlType="submit" icon={<SearchOutlined />}>
             Tìm kiếm
-          </Button>
-          <Button onClick={() => setExpand(!expand)} icon={expand ? <DownOutlined /> : <UpOutlined />}>
-            {expand ? 'Thu gọn' : 'Mở rộng'}
           </Button>
         </Space>
       }

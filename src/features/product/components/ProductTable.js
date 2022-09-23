@@ -1,48 +1,79 @@
+import { EyeOutlined, PlusOutlined } from '@ant-design/icons/'
+import { Button, Space } from 'antd'
 import CommonTable from 'commons/CommonTable'
+import ExportButton from 'commons/ExportButton'
+import { userStatusList } from 'constants/user'
+import { Link } from 'react-router-dom'
+import { findAndRenderStatus } from 'utils/array'
 
 function ProductTable({ data, isLoading, pagination, onPageChange }) {
   const columns = [
     {
-      title: 'Mã thành viên',
-      dataIndex: 'code',
+      title: 'ID',
+      dataIndex: 'id',
+      width: 100,
     },
     {
-      title: 'Tên thành viên',
+      title: 'Tên người dùng',
       dataIndex: 'name',
     },
     {
-      title: 'Loại tài khoản',
-      key: 'account_type',
-      dataIndex: 'account_type',
+      title: 'Email',
+      dataIndex: 'email',
     },
     {
-      title: 'Số điện thoại',
+      title: 'SĐT',
       dataIndex: 'phone',
     },
     {
-      title: 'Điểm kết nối',
-      dataIndex: ['point_info', 'point'],
+      title: 'Phân quyền',
+      dataIndex: 'role_id',
+    },
+    {
+      title: 'Trạng thái',
+      dataIndex: 'status',
+      render: (value) => findAndRenderStatus(userStatusList, value),
+    },
+    {
+      title: 'Hành động',
+      width: 150,
+      fixed: 'right',
       align: 'center',
-    },
-    {
-      title: 'MFF quản lý',
-      dataIndex: ['mff_info', 'info', 'name'],
-    },
-    {
-      title: 'Phân vùng',
-      dataIndex: ['city_working_info', 'parent_info', 'name'],
-    },
-    {
-      title: 'Tỉnh thành',
-      dataIndex: ['city_working_info', 'name'],
+      render: (value) => {
+        return (
+          <Link
+            to={{
+              pathname: `/users/${value.id}`,
+            }}
+          >
+            <Button type="primary" icon={<EyeOutlined />} />
+          </Link>
+        )
+      },
     },
   ]
+
+  const renderExtra = () => {
+    return (
+      <Space>
+        <ExportButton title="Xuất dữ liệu" file_name="Products" />
+        <Link to="/products/add">
+          <Button icon={<PlusOutlined />} type="primary">
+            Thêm người dùng
+          </Button>
+        </Link>
+      </Space>
+    )
+  }
+
   return (
     <CommonTable
+      name="sản phẩm"
+      columns={columns}
+      cardProps={{ extra: renderExtra() }}
       pagination={pagination}
       isLoading={isLoading}
       dataSource={data}
-      columns={columns}
       onPageChange={onPageChange}
     />
   )

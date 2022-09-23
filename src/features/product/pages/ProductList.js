@@ -6,11 +6,11 @@ import { defaultPagination } from 'constants/common'
 import { checkDisableFrom, checkDisableTo } from 'utils/form'
 import ProductFilter from '../components/ProductFilter'
 import ProductTable from '../components/ProductTable'
-import productAPI from 'api/productAPI'
 import { useQuery } from '@tanstack/react-query'
+import productAPI from 'api/productAPI'
 
 function ProductList(props) {
-  const breadcrumb = [{ path: '', active: true, name: 'Danh sách sản phẩm' }]
+  const breadcrumb = [{ path: '', active: true, name: 'Danh sách người dùng' }]
   const [filterForm] = Form.useForm()
 
   const filterList = [
@@ -79,7 +79,13 @@ function ProductList(props) {
     },
   ])
 
-  const { data, isLoading, isError } = useQuery(['product-list', apiFilter], () => productAPI.getAll(apiFilter))
+  const { data: productList, isLoading, isError } = useQuery(['product-list', apiFilter], () => productAPI.getAll(apiFilter))
+
+  const pagination = {
+    page: filter.page,
+    perPage: filter.perPage,
+    total: productList?.pageInfo?.total,
+  }
 
   const handlePageChange = ({ current, pageSize }) => {
     onFilterChange({ perPage: pageSize, page: current })
@@ -94,7 +100,12 @@ function ProductList(props) {
         onChange={onFilterChange}
         onReset={onResetFilter}
       />
-      <ProductTable data={data?.data || []} isLoading={isLoading} onPageChange={handlePageChange} />
+      <ProductTable
+        data={productList?.data || []}
+        isLoading={isLoading}
+        pagination={pagination}
+        onPageChange={handlePageChange}
+      />
     </CommonContent>
   )
 }

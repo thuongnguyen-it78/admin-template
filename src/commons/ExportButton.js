@@ -4,7 +4,7 @@ import { DownloadOutlined } from '@ant-design/icons'
 import moment from 'moment'
 import FileDownload from 'js-file-download'
 
-const ExportButton = ({ children, fileName, exportAPI, buttonProps }) => {
+const ExportButton = ({ children = 'Xuất dữ liệu', fileName = '', exportAPI, buttonProps }) => {
   const [exporting, setExporting] = useState(false)
 
   const exportFile = async () => {
@@ -26,7 +26,7 @@ const ExportButton = ({ children, fileName, exportAPI, buttonProps }) => {
 
   return (
     <Button ghost loading={exporting} onClick={exportFile} type="primary" icon={<DownloadOutlined />} {...buttonProps}>
-      {children || 'Xuất dữ liệu'}
+      {children}
     </Button>
   )
 }

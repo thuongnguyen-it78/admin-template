@@ -1,8 +1,9 @@
+import { TableOutlined } from '@ant-design/icons'
 import { Table } from 'antd'
 import { useMemo } from 'react'
 import CommonCard from './CommonCard'
 
-function CommonTable({ dataSource, columns, name, isLoading, pagination, onPageChange, cardProps }) {
+function CommonTable({ dataSource, columns, name, isLoading, pagination, onPageChange, cardProps, size = 'middle' }) {
   const newPagination = useMemo(
     () => ({
       total: pagination?.total,
@@ -13,9 +14,18 @@ function CommonTable({ dataSource, columns, name, isLoading, pagination, onPageC
   )
 
   return (
-    <CommonCard title={<b>{`Danh sách ${name ? name : ''}`.toUpperCase()}</b>} {...cardProps}>
+    <CommonCard
+      title={
+        <b>
+          <TableOutlined style={{ marginRight: 5 }} />
+          {`Danh sách ${name ? name : ''}`.toUpperCase()}
+        </b>
+      }
+      {...cardProps}
+    >
       <Table
         rowKey="id"
+        size={size}
         dataSource={dataSource || []}
         columns={columns}
         onChange={onPageChange}

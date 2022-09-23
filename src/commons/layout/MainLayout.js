@@ -1,31 +1,17 @@
-import { Layout, Menu } from 'antd'
-import { navList } from 'constants/nav'
-import { useState } from 'react'
+import { Layout } from 'antd'
 import { Outlet } from 'react-router-dom'
 import MainFooter from './MainFooter'
 import MainHeader from './MainHeader'
+import MainSider from './MainSider'
 
-const { Header, Content, Footer, Sider } = Layout
+const { Header, Content, Footer } = Layout
 
 const MainLayout = () => {
-  const [collapsed, setCollapsed] = useState(false)
   return (
     <Layout className="main-layout">
-      <Sider
-        className="main-layout-sider"
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
-      >
-        <Menu defaultSelectedKeys={['1']} mode="inline" items={navList} />
-      </Sider>
+      <MainSider />
 
-      <Layout
-        className="sub-main-layout"
-        style={{
-          marginLeft: collapsed ? 80 : 200,
-        }}
-      >
+      <Layout className="sub-main-layout" id="sub-main-layout-id">
         <Header className="sub-main-layout-header">
           <MainHeader />
         </Header>

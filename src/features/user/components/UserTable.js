@@ -57,20 +57,23 @@ function UserTable({ data, isLoading, pagination, onPageChange }) {
     return (
       <Space>
         <ExportButton title="Xuất dữ liệu" file_name="Users" />
-        <Button icon={<PlusOutlined />} type="primary">
-          Thêm người dùng
-        </Button>
+        <Link to="/users/add">
+          <Button icon={<PlusOutlined />} type="primary">
+            Thêm người dùng
+          </Button>
+        </Link>
       </Space>
     )
   }
 
   return (
     <CommonTable
+      name="Người dùng"
+      columns={columns}
       cardProps={{ extra: renderExtra() }}
       pagination={pagination}
       isLoading={isLoading}
       dataSource={data}
-      columns={columns}
       onPageChange={onPageChange}
     />
   )

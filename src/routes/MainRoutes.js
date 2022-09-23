@@ -7,6 +7,7 @@ import NotFound from 'commons/NotFound'
 import { DASHBOARD_PATH, NOT_FOUND_PATH, PRODUCT_PATH, USER_PATH } from 'constants/path'
 
 // product routing
+const Dashboard = Loader(lazy(() => import('features/dashboard/pages/Dashboard')))
 const ProductList = Loader(lazy(() => import('features/product/pages/ProductList')))
 const UserList = Loader(lazy(() => import('features/user/pages/UserList')))
 
@@ -22,7 +23,7 @@ const MainRoutes = {
   children: [
     {
       path: DASHBOARD_PATH,
-      element: <ProductList />,
+      element: <Dashboard />,
     },
     {
       path: PRODUCT_PATH,
