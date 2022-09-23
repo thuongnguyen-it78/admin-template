@@ -16,3 +16,7 @@
 - Setup phân quyền cho dự án: phân quyền theo module và chức năng
 - Setup cách ghi log hiệu quả cho dự án
 - ... 
+
+
+# Issue
+- Hook filter vẫn chưa được tối ưu và gặp tính trạng call API trong component filter, thì render cả container
