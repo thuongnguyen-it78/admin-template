@@ -9,10 +9,10 @@ function CommonBreadcrumb({ routes }) {
     const newRoutes = [...defaultRoutes, ...routes]
     return newRoutes.map((item, index) => {
       const children = (
-        <span className="d-inline-flex align-items-center">
+        <>
           {item.icon && <span className="pe-1">{item.icon}</span>}
           <span>{item.name}</span>
-        </span>
+        </>
       )
 
       if (item.active || item.disabled) {
