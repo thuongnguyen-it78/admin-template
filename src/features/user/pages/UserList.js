@@ -8,6 +8,7 @@ import UserFilter from '../components/UserFilter'
 import UserTable from '../components/UserTable'
 import userAPI from 'api/userAPI'
 import { useQuery } from '@tanstack/react-query'
+import { queryKeys } from 'constants/queryKey'
 
 function UserList(props) {
   const breadcrumb = [{ path: '', active: true, name: 'Danh sách người dùng' }]
@@ -79,13 +80,22 @@ function UserList(props) {
     },
   ])
 
-  const { data: userList, isLoading, isError } = useQuery(['user-list', apiFilter], () => userAPI.getAll(apiFilter))
+  const {
+    data: userList,
+    isLoading,
+    isError,
+  } = useQuery(queryKeys.users.getAll(apiFilter), () => userAPI.getAll(apiFilter))
 
   const pagination = {
     page: filter.page,
     perPage: filter.perPage,
     total: userList?.pageInfo?.total,
   }
+
+  console.log(userList?.data, pagination.total)
+
+  console.log(apiFilter);
+  
 
   const handlePageChange = ({ current, pageSize }) => {
     onFilterChange({ perPage: pageSize, page: current })

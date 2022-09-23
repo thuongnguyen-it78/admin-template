@@ -1533,6 +1533,11 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
+"@lukemorales/query-key-factory@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@lukemorales/query-key-factory/-/query-key-factory-0.6.1.tgz#19f9bae9f1b83554e52d9884b60f7049736c7406"
+  integrity sha512-VgqEQFSvihTSDDNdzWXnfogfz8IWURBdFRxXjUBiF3R0cK7WsAz8m3pFJZLWj4o0l2WiCN9vCAcj8cZPp9x0Jg==
+
 "@motionone/animation@^10.12.0":
   version "10.13.1"
   resolved "https://registry.yarnpkg.com/@motionone/animation/-/animation-10.13.1.tgz#ebacb50df4b7eb4957cf398c221ae10852f28520"
@@ -9393,11 +9398,6 @@ socks@^2.6.2:
   dependencies:
     ip "^2.0.0"
     smart-buffer "^4.2.0"
-
-solid-toast@^0.3.5:
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/solid-toast/-/solid-toast-0.3.5.tgz#64c2aecd2ce322f24fb0a00f227baad28bbe1eec"
-  integrity sha512-m4PX2ESex9nSwt9d9XTr3r+Kp3vjSoViDWj3gj6Xxgz21IKYODMKhACXurlZCztz56NQBnfX2m4es4I8JgXGQQ==
 
 source-list-map@^2.0.0, source-list-map@^2.0.1:
   version "2.0.1"

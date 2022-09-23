@@ -18,7 +18,7 @@ export const formatFilterBeforeSyncURL = (filter) => {
   return cloneFilter
 }
 
-export const formatFilterValue = ({ value, type, split, defaultValue = undefined }) => {
+export const formatFilterValue = ({ value, type, split, defaultValue = undefined }) => {  
   if (value === undefined || value === null) return defaultValue
   if (!type) return value
 
