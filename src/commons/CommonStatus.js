@@ -39,7 +39,7 @@ function CommonStatus({ statusList, status, onChange }) {
       {findAndRenderStatus(statusList, status)}
       <Dropdown overlay={menu()} trigger={['click']}>
         <Button type="link" icon={<DownOutlined />}>
-          Thay đổi
+          Thay đổi trạng thái
         </Button>
       </Dropdown>
     </>
