@@ -14,10 +14,21 @@ let navItems = [
 
   },
   {
+    label: 'Button',
+    icon: <DesktopOutlined />,
+    path: '/buttons'
+
+  },
+  {
+    label: 'Status',
+    icon: <DesktopOutlined />,
+    path: '/statuses'
+
+  },
+  { 
     label: 'Product',
     icon: <FileOutlined />,
     path: '/products'
-
   },
   {
     label: 'System',

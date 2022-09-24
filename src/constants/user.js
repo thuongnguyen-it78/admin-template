@@ -8,7 +8,7 @@ import { Color } from "./theme"
 // import * as USER from 'constants/user'. USER.ACTIVE_STATUS. USER.STATUSES
 
 export const userStatus = {
-  active: { id: 1, name: 'Active', color: Color.green },
+  active: { id: 1, name: 'Active', color: Color.green, changeIds: [-1] },
   inactive: { id: -1, name: 'Inactive', color: Color.red },
 }
 

@@ -4,7 +4,7 @@ import clsx from 'clsx'
 function CommonCard({ title, children, isLoading, className, ...rest }) {
   return (
     <Card
-    size="small"
+      size="small"
       title={title && <b>{title}</b>}
       className={clsx('common-card', className && className)}
       {...rest}
