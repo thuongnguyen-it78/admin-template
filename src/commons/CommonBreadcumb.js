@@ -34,7 +34,11 @@ function CommonBreadcrumb({ routes }) {
     })
   }
 
-  return <Breadcrumb className="common-breadcrumb mb-2">{renderBreadcrumbItems(routes || [])}</Breadcrumb>
+  return (
+    <Breadcrumb className="common-breadcrumb" style={{ marginBottom: 10 }}>
+      {renderBreadcrumbItems(routes || [])}
+    </Breadcrumb>
+  )
 }
 
 export default CommonBreadcrumb
