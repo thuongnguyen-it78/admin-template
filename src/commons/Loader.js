@@ -1,13 +1,11 @@
-import { Spin } from 'antd'
 import { Suspense } from 'react'
+import ProgressBarLoading from './ProgressBarLoading'
 
 const Loader = (Component) => (props) =>
   (
     <Suspense
       fallback={
-        <div className="suspense-fallback">
-          <Spin />
-        </div>
+        <ProgressBarLoading />
       }
     >
       <Component {...props} />
