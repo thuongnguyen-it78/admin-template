@@ -53,7 +53,7 @@ function MainHeader(props) {
       <Dropdown overlay={menu} trigger={['click']} style={{ marginLeft: 'auto' }} placement="bottomRight" arrow>
         <Space style={{ cursor: 'pointer' }}>
           <Avatar icon={<UserOutlined />} src={''} />
-          <Typography>{user.fullName}</Typography>
+          <Typography>{user?.fullName}</Typography>
         </Space>
       </Dropdown>
     </div>
