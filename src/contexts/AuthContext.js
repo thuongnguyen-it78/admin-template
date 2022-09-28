@@ -6,19 +6,22 @@ export const AuthContext = createContext()
 function AuthProvider({ children }) {
   const [auth, setAuth] = useLocalStorage(localStorageKeys.AUTH, {})
 
-  const handleAuthChange = (value) => {
+  const handleAuthChange = (value) => {    
     setAuth({
       ...auth,
       ...value,
     })
   }  
 
+  console.log(auth);
+  
+
   return (
     <AuthContext.Provider
       value={{
         user: auth?.user,
         token: auth?.token,
-        isLoggedIn: Boolean(auth?.id),
+        isLoggedIn: Boolean(auth?.token),
         onAuthChange: handleAuthChange,
       }}
     >

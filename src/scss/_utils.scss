@@ -114,6 +114,10 @@
   -webkit-box-orient: vertical;
 }
 
+.w-100 {
+  width: 100%;
+}
+
 .fw-bold {
   font-weight: bold;
 }
@@ -125,6 +129,10 @@
 // FLEX UTILS
 .d-inline-flex {
   display: flex;
+}
+
+.d-block {
+  display: block;
 }
 
 .d-flex {

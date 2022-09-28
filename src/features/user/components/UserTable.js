@@ -5,17 +5,18 @@ import ExportButton from 'commons/ExportButton'
 import { userStatusList } from 'constants/user'
 import { Link } from 'react-router-dom'
 import { findAndRenderStatus } from 'utils/array'
+import { formatDateToString } from 'utils/date'
 
 function UserTable({ data, isLoading, pagination, onPageChange }) {
   const columns = [
     {
       title: 'ID',
-      dataIndex: 'id',
-      width: 100,
+      dataIndex: '_id',
+      width: 130,
     },
     {
       title: 'Tên người dùng',
-      dataIndex: 'name',
+      dataIndex: 'fullName',
     },
     {
       title: 'Email',
@@ -27,12 +28,17 @@ function UserTable({ data, isLoading, pagination, onPageChange }) {
     },
     {
       title: 'Phân quyền',
-      dataIndex: 'role_id',
+      dataIndex: 'role',
     },
     {
       title: 'Trạng thái',
       dataIndex: 'status',
       render: (value) => findAndRenderStatus(userStatusList, value),
+    },
+    {
+      title: 'Ngày tạo',
+      dataIndex: 'createdAt',
+      render: (value) => formatDateToString(value),
     },
     {
       title: 'Hành động',

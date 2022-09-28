@@ -1,11 +1,13 @@
 import { useMutation } from '@tanstack/react-query'
-import { Button, Checkbox, Form, Input, message } from 'antd'
+import { Button, Checkbox, Form, Input, message, Typography } from 'antd'
 import authAPI from 'api/authAPI'
 import { localStorageKeys } from 'constants/config'
 import { DASHBOARD_PATH } from 'constants/path'
 import useAuth from 'hooks/userAuth'
 import { useNavigate } from 'react-router-dom'
 import { getItemLocalStorage, setItemLocalStorage } from 'utils/common'
+import { LoginOutlined } from '@ant-design/icons'
+const size = 'large'
 
 function Login(props) {
   const navigate = useNavigate()
@@ -21,7 +23,7 @@ function Login(props) {
     onError: () => {
       message.error('Đăng nhập không thành công')
     },
-    onSuccess: (data) => {
+    onSuccess: (data) => {      
       onAuthChange(data)
       message.success('Đăng nhập thành công')
       navigate(DASHBOARD_PATH)
@@ -29,7 +31,7 @@ function Login(props) {
   })
 
   const handleFinish = async (values) => {
-    await login(values)    
+    await login(values)
     if (values.remember) {
       setItemLocalStorage(localStorageKeys.LOGIN_FORM_VALUE, values)
     }
@@ -37,28 +39,29 @@ function Login(props) {
 
   return (
     <div className="login">
-      <Form
-        name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        initialValues={initialValues}
-        onFinish={handleFinish}
-        autoComplete="off"
-      >
-        <Form.Item label="Email" name="username" rules={[{ required: true, message: 'Vui lòng nhập email' }]}>
-          <Input />
+      <Form name="basic" initialValues={initialValues} onFinish={handleFinish} autoComplete="off">
+        <Typography.Title level={3} className="mb-4">Đăng nhập</Typography.Title>
+        <Form.Item name="username" rules={[{ required: true, message: 'Vui lòng nhập email' }]}>
+          <Input placeholder="Email" size={size} />
         </Form.Item>
 
-        <Form.Item label="Mật khẩu" name="password" rules={[{ required: true, message: 'Vui lòng nhập mật khẩu' }]}>
-          <Input.Password />
+        <Form.Item name="password" rules={[{ required: true, message: 'Vui lòng nhập mật khẩu' }]}>
+          <Input.Password placeholder="Mật khẩu" size={size} />
         </Form.Item>
 
-        <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-          <Checkbox>Nhớ mật khẩu</Checkbox>
+        <Form.Item name="remember" valuePropName="checked">
+          <Checkbox size={size}>Nhớ mật khẩu</Checkbox>
         </Form.Item>
 
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit" loading={loginLoading}>
+        <Form.Item wrapperCol={{ span: 24 }}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            loading={loginLoading}
+            className="w-100 d-block"
+            size={size}
+            icon={<LoginOutlined />}
+          >
             Đăng nhập
           </Button>
         </Form.Item>
