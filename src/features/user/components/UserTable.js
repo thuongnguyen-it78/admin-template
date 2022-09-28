@@ -2,7 +2,7 @@ import { Space } from 'antd'
 import { AddButton, ViewButton } from 'commons/CommonButton'
 import CommonTable from 'commons/CommonTable'
 import ExportButton from 'commons/ExportButton'
-import { userStatusList } from 'constants/user'
+import { userRoleList, userStatusList } from 'constants/user'
 import { Link } from 'react-router-dom'
 import { findAndRenderStatus } from 'utils/array'
 import { formatDateToString } from 'utils/date'
@@ -24,11 +24,12 @@ function UserTable({ data, isLoading, pagination, onPageChange }) {
     },
     {
       title: 'SĐT',
-      dataIndex: 'phone',
+      dataIndex: 'phoneNumber',
     },
     {
       title: 'Phân quyền',
       dataIndex: 'role',
+      render: (value) => findAndRenderStatus(userRoleList, value),
     },
     {
       title: 'Trạng thái',
