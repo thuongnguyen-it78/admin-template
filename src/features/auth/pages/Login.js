@@ -1,12 +1,12 @@
 import { useMutation } from '@tanstack/react-query'
-import { Button, Checkbox, Form, Input, message, Typography } from 'antd'
+import { Button, Checkbox, Col, Form, Input, message, Row, Typography } from 'antd'
 import authAPI from 'api/authAPI'
 import { localStorageKeys } from 'constants/config'
 import { DASHBOARD_PATH } from 'constants/path'
 import useAuth from 'hooks/userAuth'
 import { useNavigate } from 'react-router-dom'
 import { getItemLocalStorage, setItemLocalStorage } from 'utils/common'
-import { LoginOutlined } from '@ant-design/icons'
+import { LoginOutlined, GoogleOutlined, FacebookOutlined } from '@ant-design/icons'
 const size = 'middle'
 
 function Login(props) {
@@ -23,7 +23,7 @@ function Login(props) {
     onError: () => {
       message.error('Đăng nhập không thành công')
     },
-    onSuccess: (data) => {      
+    onSuccess: (data) => {
       onAuthChange(data)
       message.success('Đăng nhập thành công')
       navigate(DASHBOARD_PATH)
@@ -40,7 +40,9 @@ function Login(props) {
   return (
     <div className="login">
       <Form name="basic" initialValues={initialValues} onFinish={handleFinish} autoComplete="off">
-        <Typography.Title level={3} className="mb-4">Đăng nhập</Typography.Title>
+        <Typography.Title level={3} className="mb-4">
+          Đăng nhập
+        </Typography.Title>
         <Form.Item name="username" rules={[{ required: true, message: 'Vui lòng nhập email' }]}>
           <Input placeholder="Email" size={size} />
         </Form.Item>
@@ -65,6 +67,18 @@ function Login(props) {
             Đăng nhập
           </Button>
         </Form.Item>
+        <Row gutter={[16, 8]}>
+          <Col span={24}>
+            <Button icon={<GoogleOutlined />} className="w-100 d-block">
+              Đăng nhập với Google
+            </Button>
+          </Col>
+          <Col span={24}>
+            <Button icon={<FacebookOutlined />} className="w-100 d-block">
+              Đăng nhập với Facebook
+            </Button>
+          </Col>
+        </Row>
       </Form>
     </div>
   )
