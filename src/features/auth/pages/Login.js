@@ -7,7 +7,7 @@ import useAuth from 'hooks/userAuth'
 import { useNavigate } from 'react-router-dom'
 import { getItemLocalStorage, setItemLocalStorage } from 'utils/common'
 import { LoginOutlined } from '@ant-design/icons'
-const size = 'large'
+const size = 'middle'
 
 function Login(props) {
   const navigate = useNavigate()
