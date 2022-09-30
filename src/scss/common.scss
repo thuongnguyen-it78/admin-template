@@ -22,7 +22,7 @@
 
 // <COMPONENT MAIN LAYOUT>
 .main-layout {
-  min-height: 100vh;
+  min-height: 100vh !important;
   $sider-trigger-height: 48px;
   $sider-height: calc(100vh - #{$sider-trigger-height} - 1px);
 

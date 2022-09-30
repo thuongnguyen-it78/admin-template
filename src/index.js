@@ -1,5 +1,4 @@
 import { ConfigProvider as AntDConfigProvider } from 'antd'
-import 'antd/dist/antd.min.css'
 import NavigationScroll from 'commons/NavigationScroll'
 import { antDConfig } from 'constants/config'
 import AuthProvider from 'contexts/AuthContext'
@@ -14,6 +13,7 @@ import App from './App'
 import ConfigProvider from './contexts/ConfigContext'
 import reportWebVitals from './reportWebVitals'
 import store from './store'
+import './index.less'
 
 const queryClient = new QueryClient({
   defaultOptions: {
