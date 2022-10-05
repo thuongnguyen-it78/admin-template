@@ -2,11 +2,11 @@ import { Modal, Space } from 'antd'
 import { CancelButton, ConfirmButton, SaveButton } from './CommonButton'
 
 function CommonModal({
-  title,
-  children,
   cancelText = 'Hủy bỏ',
   okText = 'Đồng ý',
   loading = true,
+  title,
+  children,
   onCancel,
   onOk,
   ...rest
