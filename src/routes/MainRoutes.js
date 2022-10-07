@@ -4,7 +4,7 @@ import AuthGuard from 'commons/AuthGuard'
 import MainLayout from 'commons/layout/MainLayout'
 import Loader from 'commons/Loader'
 import NotFound from 'commons/NotFound'
-import { DASHBOARD_PATH, NOT_FOUND_PATH, PRODUCT_PATH, USER_PATH, BUTTON_PATH, STATUS_PATH } from 'constants/path'
+import { DASHBOARD_PATH, NOT_FOUND_PATH, PRODUCT_PATH, USER_PATH, BUTTON_PATH, STATUS_PATH, ME } from 'constants/path'
 
 // product routing
 const Dashboard = Loader(lazy(() => import('features/dashboard/pages/Dashboard')))
@@ -12,6 +12,7 @@ const ProductList = Loader(lazy(() => import('features/product/pages/ProductList
 const UserList = Loader(lazy(() => import('features/user/pages/UserList')))
 const ButtonList = Loader(lazy(() => import('features/button/pages/ButtonList')))
 const StatusList = Loader(lazy(() => import('features/status/pages/StatusList')))
+const Me = Loader(lazy(() => import('features/me/pages/Me')))
 
 // ==============================|| MAIN ROUTING ||============================== //
 const MainRoutes = {
@@ -45,6 +46,10 @@ const MainRoutes = {
     {
       path: NOT_FOUND_PATH,
       element: <NotFound />,
+    },
+    {
+      path: ME,
+      element: <Me />,
     },
     // {
     //     path: '/e-commerce/product-details/:id',
