@@ -26,30 +26,37 @@ const MainRoutes = {
     {
       path: DASHBOARD_PATH,
       element: <Dashboard />,
+      actionKey: "BUTTON"
     },
     {
       path: PRODUCT_PATH,
       element: <ProductList />,
+      actionKey: "BUTTON"
     },
     {
       path: USER_PATH,
       element: <UserList />,
+      actionKey: "BUTTON"
     },
     {
       path: BUTTON_PATH,
       element: <ButtonList />,
+      actionKey: "BUTTON"
     },
     {
       path: STATUS_PATH,
       element: <StatusList />,
+      actionKey: "BUTTON"
     },
     {
       path: NOT_FOUND_PATH,
       element: <NotFound />,
+      actionKey: "BUTTON"
     },
     {
       path: ME,
       element: <Me />,
+      actionKey: "BUTTON"
     },
     // {
     //     path: '/e-commerce/product-details/:id',

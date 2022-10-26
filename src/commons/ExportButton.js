@@ -4,7 +4,7 @@ import { DownloadOutlined } from '@ant-design/icons'
 import moment from 'moment'
 import FileDownload from 'js-file-download'
 
-const ExportButton = ({ children = 'Xuất dữ liệu', fileName = '', exportAPI, buttonProps }) => {
+const ExportButton = ({ children = 'Xuất dữ liệu', fileName = '', exportAPI, ...rest }) => {
   const [exporting, setExporting] = useState(false)
 
   const exportFile = async () => {
@@ -12,20 +12,20 @@ const ExportButton = ({ children = 'Xuất dữ liệu', fileName = '', exportAP
     const name = fileName + '_' + moment().format('DDMMYYYY-HHmm') + '.xlsx'
     try {
       const response = await exportAPI()
-      if (response) {
-        FileDownload(response, name.replace(/\s/gm, '_'))
-      } else {
+      if (!response) {
         message.error('Xuất dữ liệu lỗi. Kiểm tra kết nối hệ thống')
+        return
       }
-      setExporting(false)
+      FileDownload(response, name.replace(/\s/gm, '_'))
     } catch (error) {
       message.error('Xuất dữ liệu lỗi. Kiểm tra kết nối hệ thống')
+    } finally {
       setExporting(false)
     }
   }
 
   return (
-    <Button ghost loading={exporting} onClick={exportFile} type="primary" icon={<DownloadOutlined />} {...buttonProps}>
+    <Button ghost type="primary" icon={<DownloadOutlined />} loading={exporting} onClick={exportFile} {...rest}>
       {children}
     </Button>
   )

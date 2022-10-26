@@ -29,7 +29,7 @@ function ButtonList(props) {
           cancelText="Hủy bỏ"
           okText="Cập nhật"
           loading={false}
-          visible={showModal}
+          open={showModal}
           onCancel={() => setShowModal(false)}
           onOk={() => setShowModal(false)}
         >

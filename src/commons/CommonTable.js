@@ -1,14 +1,15 @@
 import { TableOutlined } from '@ant-design/icons'
-import { Table } from 'antd'
+import { Space, Table } from 'antd'
+import { defaultPagination } from 'constants/common'
 import { useMemo } from 'react'
 import CommonCard from './CommonCard'
 
-function CommonTable({ dataSource, columns, name, isLoading, pagination, onPageChange, cardProps, size = 'default' }) {
+function CommonTable({ dataSource, columns, name, isLoading, pagination, cardProps, size = 'default', onPageChange }) {
   const newPagination = useMemo(
     () => ({
       total: pagination?.total,
-      pageSize: pagination?.perPage,
-      current: pagination?.page,
+      pageSize: pagination?.perPage || defaultPagination.perPage,
+      current: pagination?.page || defaultPagination.page,
     }),
     [pagination]
   )
@@ -16,10 +17,10 @@ function CommonTable({ dataSource, columns, name, isLoading, pagination, onPageC
   return (
     <CommonCard
       title={
-        <span>
-          <TableOutlined style={{ marginRight: 5 }} />
+        <Space>
+          <TableOutlined />
           {`Danh sách ${name ? name : ''}`.toUpperCase()}
-        </span>
+        </Space>
       }
       {...cardProps}
     >

@@ -11,10 +11,7 @@ function AuthProvider({ children }) {
       ...auth,
       ...value,
     })
-  }  
-
-  console.log(auth);
-  
+  }
 
   return (
     <AuthContext.Provider

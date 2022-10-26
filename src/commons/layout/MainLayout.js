@@ -1,4 +1,5 @@
 import { Layout } from 'antd'
+import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import MainFooter from './MainFooter'
 import MainHeader from './MainHeader'
@@ -7,6 +8,12 @@ import MainSider from './MainSider'
 const { Header, Content, Footer } = Layout
 
 const MainLayout = () => {
+  console.log('rendering')
+
+  useEffect(() => {
+    console.log('mount')
+    return () => console.log('unmount')
+  }, [])
   return (
     <Layout className="main-layout">
       <MainSider />

@@ -2,6 +2,7 @@ import { ConfigProvider as AntDConfigProvider } from 'antd'
 import NavigationScroll from 'commons/NavigationScroll'
 import { antDConfig } from 'constants/config'
 import AuthProvider from 'contexts/AuthContext'
+import PermissionProvider from 'contexts/PermissionContext'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -20,8 +21,8 @@ const queryClient = new QueryClient({
     queries: {
       refetchOnWindowFocus: false,
       retry: false,
-    }
-  }
+    },
+  },
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -32,11 +33,13 @@ root.render(
         <AntDConfigProvider {...antDConfig}>
           <ConfigProvider>
             <AuthProvider>
-              <BrowserRouter>
-                <NavigationScroll>
-                  <App />
-                </NavigationScroll>
-              </BrowserRouter>
+              <PermissionProvider>
+                <BrowserRouter>
+                  <NavigationScroll>
+                    <App />
+                  </NavigationScroll>
+                </BrowserRouter>
+              </PermissionProvider>
             </AuthProvider>
           </ConfigProvider>
         </AntDConfigProvider>

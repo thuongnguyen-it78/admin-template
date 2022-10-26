@@ -10,6 +10,7 @@ import {
 } from 'commons/CommonButton'
 import CommonCard from 'commons/CommonCard'
 import CommonContent from 'commons/CommonContent'
+import ExportButton from 'commons/ExportButton'
 
 function ButtonList(props) {
   const breadcrumb = [{ path: '', active: true, name: 'Danh sách button thông dụng' }]
@@ -24,6 +25,7 @@ function ButtonList(props) {
           <ViewButton>Xem chi tiết</ViewButton>
           <SaveButton>Cập nhật</SaveButton>
           <CancelButton>Hủy bỏ</CancelButton>
+          <ExportButton />
           <ConfirmButton button={<CancelButton>Hủy bỏ có xác nhận</CancelButton>} />
         </Space>
       </CommonCard>

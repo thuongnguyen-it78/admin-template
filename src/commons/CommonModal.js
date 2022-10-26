@@ -4,7 +4,7 @@ import { CancelButton, ConfirmButton, SaveButton } from './CommonButton'
 function CommonModal({
   cancelText = 'Hủy bỏ',
   okText = 'Đồng ý',
-  loading = true,
+  loading,
   title,
   children,
   onCancel,
